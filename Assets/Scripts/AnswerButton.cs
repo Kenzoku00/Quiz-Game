@@ -7,6 +7,7 @@ public class AnswerButton : MonoBehaviour
 {
     private bool isCorrect;
     [SerializeField] private TextMeshProUGUI answerText;
+    [SerializeField] public QuestionSetup questionSetup;
 
     public void SetAnswerText(string newText)
     {
@@ -27,6 +28,15 @@ public class AnswerButton : MonoBehaviour
         else
         {
             Debug.Log("WRONG ANSWER");
+        }
+
+        if (questionSetup.questions.Count > 0)
+        {
+            questionSetup.Start();
+        }
+        else
+        {
+            Debug.Log("No more question available");
         }
     }
 }

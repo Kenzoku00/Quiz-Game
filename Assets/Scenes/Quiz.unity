@@ -975,6 +975,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Answer Box (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5549836122784257978, guid: aca415647a9419b4384f5155a048f72a, type: 3}
+      propertyPath: questionSetup
+      value: 
+      objectReference: {fileID: 429859583}
     - target: {fileID: 9141686910880713950, guid: aca415647a9419b4384f5155a048f72a, type: 3}
       propertyPath: m_text
       value: Answer 3
@@ -1092,6 +1096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Answer Box (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5549836122784257978, guid: aca415647a9419b4384f5155a048f72a, type: 3}
+      propertyPath: questionSetup
+      value: 
+      objectReference: {fileID: 429859583}
     - target: {fileID: 9141686910880713950, guid: aca415647a9419b4384f5155a048f72a, type: 3}
       propertyPath: m_text
       value: Answer 2
@@ -1277,6 +1285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Answer Box (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5549836122784257978, guid: aca415647a9419b4384f5155a048f72a, type: 3}
+      propertyPath: questionSetup
+      value: 
+      objectReference: {fileID: 429859583}
     - target: {fileID: 9141686910880713950, guid: aca415647a9419b4384f5155a048f72a, type: 3}
       propertyPath: m_text
       value: Answer 1

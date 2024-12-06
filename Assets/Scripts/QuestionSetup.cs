@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 public class QuestionSetup : MonoBehaviour
 {
     [SerializeField]
-    private List<QuestionData> questions;
+    public List<QuestionData> questions;
     private QuestionData currentQuestion;
 
     [SerializeField]
@@ -25,8 +25,7 @@ public class QuestionSetup : MonoBehaviour
         GetQuestionAssets();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         SelectNewQuestion();
         SetQuestionValue();
