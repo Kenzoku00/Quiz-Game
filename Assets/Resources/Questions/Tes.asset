@@ -15,6 +15,6 @@ MonoBehaviour:
   question: Text1
   category: Tes
   answers:
-  - CORRECT ANSWER
-  - WRONG 1
-  - WRONG 2
+  - {fileID: 21300000, guid: eec9fd5e1000d6245a431d88cf7b8daf, type: 3}
+  - {fileID: 21300000, guid: 60bceee947da3734fa18dbbeab0f0295, type: 3}
+  - {fileID: 21300000, guid: 1b275775fdf02d14ea8ad3027c660926, type: 3}
