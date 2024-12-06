@@ -83,7 +83,7 @@ public class QuestionSetup : MonoBehaviour
                 correctAnswerChoice = i;
                 correctAnswerChosen = true;
             }
-
+             
             newList.Add(originalList[random]);
             originalList.RemoveAt(random);
         }
