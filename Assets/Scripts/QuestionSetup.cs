@@ -52,7 +52,7 @@ public class QuestionSetup : MonoBehaviour
 
     private void SetAnswerValue()
     {
-        List<string> answers = RandomizeAnswers(new List<string>(currentQuestion.answers));
+        List<Sprite> answers = RandomizeAnswers(new List<Sprite>(currentQuestion.answers));
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
@@ -64,15 +64,15 @@ public class QuestionSetup : MonoBehaviour
             }
 
             answerButtons[i].SetIsCorrect(isCorrect);
-            answerButtons[i].SetAnswerText(answers[i]);
+            answerButtons[i].SetAnswerImage(answers[i]);
         }
     }
 
-    private List<string> RandomizeAnswers(List<string> originalList)
+    private List<Sprite> RandomizeAnswers(List<Sprite> originalList)
     {
         bool correctAnswerChosen = false;
 
-        List<string> newList = new List<string>();
+        List<Sprite> newList = new List<Sprite>();
 
         for (int i = 0; i < answerButtons.Length; i++)
         {

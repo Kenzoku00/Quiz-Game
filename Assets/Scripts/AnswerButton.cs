@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class AnswerButton : MonoBehaviour
 {
     private bool isCorrect;
-    [SerializeField] private TextMeshProUGUI answerText;
+    [SerializeField] private Image answerImage;
     [SerializeField] public QuestionSetup questionSetup;
 
-    public void SetAnswerText(string newText)
+    public void SetAnswerImage(Sprite newImage)
     {
-        answerText.text = newText;
+        answerImage.sprite = newImage;
     }
 
     public void SetIsCorrect(bool newBool)
