@@ -39,6 +39,7 @@ public class AnswerButton : MonoBehaviour
         else
         {
             Debug.Log("No more question available");
+            questionSetup.CheckWinCondition();
         }
     }
 }

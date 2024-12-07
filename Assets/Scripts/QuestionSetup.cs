@@ -25,6 +25,19 @@ public class QuestionSetup : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI scoreText;
 
+    [SerializeField]
+    private float timerDuration = 120f;
+    private float timer;
+    private bool isTimerRunning = false;
+
+    [SerializeField]
+    private TextMeshProUGUI timerText;
+    [SerializeField]
+    private GameObject losePanel;
+
+    [SerializeField]
+    private GameObject winPanel;
+
     private void Awake()
     {
         GetQuestionAssets();
@@ -35,6 +48,16 @@ public class QuestionSetup : MonoBehaviour
         SelectNewQuestion();
         SetQuestionValue();
         SetAnswerValue();
+        timer = timerDuration;
+        isTimerRunning = true;
+    }
+
+    private void Update()
+    {
+        if (isTimerRunning)
+        {
+            RunTimer();
+        }
     }
 
     private void GetQuestionAssets()
@@ -105,5 +128,49 @@ public class QuestionSetup : MonoBehaviour
         {
             scoreText.text = score.ToString();
         }
+    }
+
+    public void CheckWinCondition()
+    {
+        if (questions.Count == 0)
+        {
+            Debug.Log("Menang Le");
+            if (winPanel != null)
+            {
+                winPanel.SetActive(true);
+            }
+        }
+    }
+
+    private void RunTimer()
+    {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            UpdateTimerUI();
+        }
+        else
+        {
+            timer = 0;
+            isTimerRunning = false;
+            Debug.Log("Za Warudo");
+            TriggerLoseCondition();
+        }
+    }
+
+    private void UpdateTimerUI()
+    {
+        int minutes = Mathf.FloorToInt(timer / 60);
+        int seconds = Mathf.FloorToInt(timer % 60);
+        timerText.text = $"{minutes:00}:{seconds:00}";
+    }
+
+    private void TriggerLoseCondition()
+    {
+        if (losePanel != null)
+        {
+            losePanel.SetActive(true);
+        }
+        Debug.Log("Skill Issue");
     }
 }
