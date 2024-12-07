@@ -20,6 +20,11 @@ public class QuestionSetup : MonoBehaviour
     [SerializeField]
     private int correctAnswerChoice;
 
+    [SerializeField]
+    private int score = 0;
+    [SerializeField]
+    private TextMeshProUGUI scoreText;
+
     private void Awake()
     {
         GetQuestionAssets();
@@ -89,5 +94,16 @@ public class QuestionSetup : MonoBehaviour
         }
 
         return newList;
+    }
+
+    public void AddScore(int points)
+    {
+        score += points;
+        Debug.Log($"Score: {score}");
+
+        if (scoreText != null)
+        {
+            scoreText.text = score.ToString();
+        }
     }
 }

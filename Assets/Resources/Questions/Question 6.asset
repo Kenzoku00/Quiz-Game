@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8ad3af408062f468cb245c15e273ad, type: 3}
   m_Name: Question 6
   m_EditorClassIdentifier: 
-  question: 
-  category: 
-  answers: []
+  question: Yang Manakah Gambar Mangga  ?
+  category: Tebak Gambar Buah dan Sayur
+  answers:
+  - {fileID: 21300000, guid: d4443d5c56ad5794aaa944ebc1d838e8, type: 3}
+  - {fileID: 21300000, guid: ec47d937be35d0e419de7f3d82b44a5b, type: 3}
+  - {fileID: 21300000, guid: 15ed5913d62dbd94595e6f96d716cc89, type: 3}

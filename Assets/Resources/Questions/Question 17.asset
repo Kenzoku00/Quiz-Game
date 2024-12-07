@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8ad3af408062f468cb245c15e273ad, type: 3}
   m_Name: Question 17
   m_EditorClassIdentifier: 
-  question: 
-  category: 
-  answers: []
+  question: Yang Manakah Gambar Kacang Polong  ?
+  category: Tebak Gambar Buah dan Sayur
+  answers:
+  - {fileID: 21300000, guid: 19ec5dd8a0abb2d4197c82e4d268779d, type: 3}
+  - {fileID: 21300000, guid: 3f1a3b992bd34704781bcda8ab04b398, type: 3}
+  - {fileID: 21300000, guid: f61cb62ada7f8ee4baf0907c0e103bfe, type: 3}

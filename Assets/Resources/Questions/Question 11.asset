@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8ad3af408062f468cb245c15e273ad, type: 3}
   m_Name: Question 11
   m_EditorClassIdentifier: 
-  question: 
-  category: 
-  answers: []
+  question: Yang Manakah Gambar Brokoli  ?
+  category: Tebak Gambar Buah dan Sayur
+  answers:
+  - {fileID: 21300000, guid: da4dd081e47c47b4394b8c936b079230, type: 3}
+  - {fileID: 21300000, guid: 5f22a246ed5226a4db8cd36965cc904e, type: 3}
+  - {fileID: 21300000, guid: b1affdefb5381414f84460f1d6390bb8, type: 3}

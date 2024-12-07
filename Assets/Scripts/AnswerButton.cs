@@ -25,6 +25,7 @@ public class AnswerButton : MonoBehaviour
         if (isCorrect)
         {
             Debug.Log("CORRECT ANSWER");
+            questionSetup.AddScore(10);
         }
         else
         {

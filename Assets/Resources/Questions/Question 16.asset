@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8ad3af408062f468cb245c15e273ad, type: 3}
   m_Name: Question 16
   m_EditorClassIdentifier: 
-  question: 
-  category: 
-  answers: []
+  question: Yang Manakah Gambar Pakcoy  ?
+  category: Tebak Gambar Buah dan Sayur
+  answers:
+  - {fileID: 21300000, guid: 12d624c176ed5ee42ae7e06e8c2a452a, type: 3}
+  - {fileID: 21300000, guid: b1affdefb5381414f84460f1d6390bb8, type: 3}
+  - {fileID: 21300000, guid: f61cb62ada7f8ee4baf0907c0e103bfe, type: 3}

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8ad3af408062f468cb245c15e273ad, type: 3}
   m_Name: Question 20
   m_EditorClassIdentifier: 
-  question: 
-  category: 
-  answers: []
+  question: Yang Manakah Gambar Lobak  ?
+  category: Tebak Gambar Buah dan Sayur
+  answers:
+  - {fileID: 21300000, guid: f5500246831857648bb0ff81a2b7dc21, type: 3}
+  - {fileID: 21300000, guid: 5f22a246ed5226a4db8cd36965cc904e, type: 3}
+  - {fileID: 21300000, guid: 12d624c176ed5ee42ae7e06e8c2a452a, type: 3}

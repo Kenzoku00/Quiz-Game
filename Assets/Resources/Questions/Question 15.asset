@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8ad3af408062f468cb245c15e273ad, type: 3}
   m_Name: Question 15
   m_EditorClassIdentifier: 
-  question: 
-  category: 
-  answers: []
+  question: Yang Manakah Gambar Terong  ?
+  category: Tebak Gambar Buah dan Sayur
+  answers:
+  - {fileID: 21300000, guid: 3f1a3b992bd34704781bcda8ab04b398, type: 3}
+  - {fileID: 21300000, guid: fae7a156ce273774c95b61275053f428, type: 3}
+  - {fileID: 21300000, guid: f5500246831857648bb0ff81a2b7dc21, type: 3}

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8ad3af408062f468cb245c15e273ad, type: 3}
   m_Name: Question 4
   m_EditorClassIdentifier: 
-  question: 
-  category: 
-  answers: []
+  question: Yang Manakah Gambar Ceri  ?
+  category: Tebak Gambar Buah dan Sayur
+  answers:
+  - {fileID: 21300000, guid: 5f3a21dea14d29c41b8f33bd1c3cee11, type: 3}
+  - {fileID: 21300000, guid: 6a10a386dee234b4590b09b4223b89f1, type: 3}
+  - {fileID: 21300000, guid: 78fc79ba93b2f404a8e6def1a2b11c0d, type: 3}
