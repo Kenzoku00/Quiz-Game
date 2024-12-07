@@ -2088,6 +2088,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4046553464555776705, guid: aca415647a9419b4384f5155a048f72a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5549836122784257978, guid: aca415647a9419b4384f5155a048f72a, type: 3}
       propertyPath: questionSetup
       value: 
