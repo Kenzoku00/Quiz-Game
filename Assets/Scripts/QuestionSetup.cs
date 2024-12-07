@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 
 public class QuestionSetup : MonoBehaviour
 {
+    [HideInInspector]
     [SerializeField]
     public List<QuestionData> questions;
     private QuestionData currentQuestion;
