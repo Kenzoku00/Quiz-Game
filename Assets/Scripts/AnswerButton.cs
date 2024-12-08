@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class AnswerButton : MonoBehaviour
 {
@@ -26,20 +27,47 @@ public class AnswerButton : MonoBehaviour
         {
             Debug.Log("CORRECT ANSWER");
             questionSetup.AddScore(10);
+            AnimateCorrectAnswer();
         }
         else
         {
             Debug.Log("WRONG ANSWER");
+            AnimateWrongAnswer();
         }
+    }
 
-        if (questionSetup.questions.Count > 0)
+    private void AnimateCorrectAnswer()
+    {
+        answerImage.transform.DOScale(1.2f, 0.25f).OnKill(() =>
         {
-            questionSetup.Start();
-        }
-        else
+            answerImage.transform.DOScale(1f, 0.25f).OnKill(() =>
+            {
+                if (questionSetup.questions.Count > 0)
+                {
+                    questionSetup.Start();
+                }
+                else
+                {
+                    Debug.Log("Habis Le...");
+                    questionSetup.CheckWinCondition();
+                }
+            });
+        });
+    }
+
+    private void AnimateWrongAnswer()
+    {
+        answerImage.transform.DOShakePosition(0.5f, 20f, 50, 90, false, true).OnKill(() =>
         {
-            Debug.Log("No more question available");
-            questionSetup.CheckWinCondition();
-        }
+            if (questionSetup.questions.Count > 0)
+            {
+                questionSetup.Start();
+            }
+            else
+            {
+                Debug.Log("Habis Le...");
+                questionSetup.CheckWinCondition();
+            }
+        });
     }
 }

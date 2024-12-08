@@ -386,7 +386,7 @@ MonoBehaviour:
   score: 0
   scoreText: {fileID: 37663133}
   finalScoreText: {fileID: 2116838203}
-  timerDuration: 2
+  timerDuration: 120
   timerText: {fileID: 1679680547}
   losePanel: {fileID: 2104592577}
   winPanel: {fileID: 2104592577}
