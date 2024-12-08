@@ -23,6 +23,12 @@ public class AnswerButton : MonoBehaviour
 
     public void OnClick()
     {
+        if (questionSetup.isTransitioning) return;
+
+        if (questionSetup.isAnswered) return;
+
+        questionSetup.isAnswered = true;
+
         if (isCorrect)
         {
             Debug.Log("CORRECT ANSWER");
@@ -42,15 +48,7 @@ public class AnswerButton : MonoBehaviour
         {
             answerImage.transform.DOScale(1f, 0.25f).OnKill(() =>
             {
-                if (questionSetup.questions.Count > 0)
-                {
-                    questionSetup.Start();
-                }
-                else
-                {
-                    Debug.Log("Habis Le...");
-                    questionSetup.CheckWinCondition();
-                }
+                questionSetup.StartCoroutine(questionSetup.TransitionToNextQuestion(0.5f));
             });
         });
     }
@@ -59,15 +57,7 @@ public class AnswerButton : MonoBehaviour
     {
         answerImage.transform.DOShakePosition(0.5f, 20f, 50, 90, false, true).OnKill(() =>
         {
-            if (questionSetup.questions.Count > 0)
-            {
-                questionSetup.Start();
-            }
-            else
-            {
-                Debug.Log("Habis Le...");
-                questionSetup.CheckWinCondition();
-            }
+            questionSetup.StartCoroutine(questionSetup.TransitionToNextQuestion(0.5f));
         });
     }
 }

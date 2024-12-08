@@ -57,6 +57,9 @@ public class QuestionSetup : MonoBehaviour
 
     private int[] scoreThresholds = { 60, 120, 200 };
 
+    public bool isTransitioning = false;
+    public bool isAnswered = false;
+
     private void Awake()
     {
         GetQuestionAssets();
@@ -70,6 +73,8 @@ public class QuestionSetup : MonoBehaviour
         AnimateAnswerBoxes();
         timer = timerDuration;
         isTimerRunning = true;
+        isAnswered = false;
+        
     }
 
     private void Update()
@@ -90,6 +95,27 @@ public class QuestionSetup : MonoBehaviour
         int randomQuestionIndex = Random.Range(0, questions.Count);
         currentQuestion = questions[randomQuestionIndex];
         questions.RemoveAt(randomQuestionIndex);
+    }
+
+    public IEnumerator TransitionToNextQuestion(float delay)
+    {
+        if (isTransitioning) yield break;
+
+        isTransitioning = true;
+
+        yield return new WaitForSeconds(delay);
+
+        if (questions.Count > 0)
+        {
+            Start();
+        }
+        else
+        {
+            Debug.Log("Habis Le...");
+            CheckWinCondition();
+        }
+
+        isTransitioning = false;
     }
 
     private void SetQuestionValue()
