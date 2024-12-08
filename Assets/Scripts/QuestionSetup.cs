@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System.Runtime.InteropServices;
 
@@ -25,6 +26,8 @@ public class QuestionSetup : MonoBehaviour
     private int score = 0;
     [SerializeField]
     private TextMeshProUGUI scoreText;
+    [SerializeField]
+    private TextMeshProUGUI finalScoreText;
 
     [SerializeField]
     private float timerDuration = 120f;
@@ -38,6 +41,16 @@ public class QuestionSetup : MonoBehaviour
 
     [SerializeField]
     private GameObject winPanel;
+
+    [SerializeField]
+    private Image[] stars;
+
+    [SerializeField]
+    private Sprite activeStar;
+    [SerializeField]
+    private Sprite inactiveStar;
+
+    private int[] scoreThresholds = { 60, 120, 200 };
 
     private void Awake()
     {
@@ -131,18 +144,6 @@ public class QuestionSetup : MonoBehaviour
         }
     }
 
-    public void CheckWinCondition()
-    {
-        if (questions.Count == 0)
-        {
-            Debug.Log("Menang Le");
-            if (winPanel != null)
-            {
-                winPanel.SetActive(true);
-            }
-        }
-    }
-
     private void RunTimer()
     {
         if (timer > 0)
@@ -166,12 +167,49 @@ public class QuestionSetup : MonoBehaviour
         timerText.text = $"{minutes:00}:{seconds:00}";
     }
 
+    public void CheckWinCondition()
+    {
+        if (questions.Count == 0)
+        {
+            Debug.Log("Menang Le");
+            if (finalScoreText != null)
+            {
+                finalScoreText.text = $"{score}";
+            }
+            if (winPanel != null)
+            {
+                winPanel.SetActive(true);
+                UpdateStars(score);
+            }
+        }
+    }
+
     private void TriggerLoseCondition()
     {
+        if (finalScoreText != null)
+        {
+            finalScoreText.text = $"{score}";
+        }
         if (losePanel != null)
         {
             losePanel.SetActive(true);
+            UpdateStars(score);
         }
         Debug.Log("Skill Issue");
+    }
+
+    public void UpdateStars(int score)
+    {
+        for (int i = 0; i < stars.Length; i++)
+        {
+            if (score >= scoreThresholds[i])
+            {
+                stars[i].sprite = activeStar;
+            }
+            else
+            {
+                stars[i].sprite = inactiveStar;
+            }
+        }
     }
 }
