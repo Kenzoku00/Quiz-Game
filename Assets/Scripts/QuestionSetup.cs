@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Runtime.InteropServices;
+using DG.Tweening;
 
 public class QuestionSetup : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class QuestionSetup : MonoBehaviour
     private TextMeshProUGUI categoryText;
     [SerializeField]
     private AnswerButton[] answerButtons;
+    [SerializeField]
+    private GameObject[] answerBox;
+    [SerializeField]
+    private GameObject[] mainGameObject;
 
     [SerializeField]
     private int correctAnswerChoice;
@@ -62,6 +67,7 @@ public class QuestionSetup : MonoBehaviour
         SelectNewQuestion();
         SetQuestionValue();
         SetAnswerValue();
+        AnimateAnswerBoxes();
         timer = timerDuration;
         isTimerRunning = true;
     }
@@ -167,37 +173,6 @@ public class QuestionSetup : MonoBehaviour
         timerText.text = $"{minutes:00}:{seconds:00}";
     }
 
-    public void CheckWinCondition()
-    {
-        if (questions.Count == 0)
-        {
-            Debug.Log("Menang Le");
-            if (finalScoreText != null)
-            {
-                finalScoreText.text = $"{score}";
-            }
-            if (winPanel != null)
-            {
-                winPanel.SetActive(true);
-                UpdateStars(score);
-            }
-        }
-    }
-
-    private void TriggerLoseCondition()
-    {
-        if (finalScoreText != null)
-        {
-            finalScoreText.text = $"{score}";
-        }
-        if (losePanel != null)
-        {
-            losePanel.SetActive(true);
-            UpdateStars(score);
-        }
-        Debug.Log("Skill Issue");
-    }
-
     public void UpdateStars(int score)
     {
         for (int i = 0; i < stars.Length; i++)
@@ -212,4 +187,84 @@ public class QuestionSetup : MonoBehaviour
             }
         }
     }
+
+    private void AnimateAnswerBoxes()
+    {
+        foreach (var box in answerBox)
+        {
+            box.transform.localScale = Vector3.zero;
+        }
+
+        for (int i = 0; i < answerBox.Length; i++)
+        {
+            float delay = i * 0.2f;
+            answerBox[i].transform.DOScale(0.4f, 0.5f).SetDelay(delay).SetEase(Ease.OutBack);
+        }
+    }
+
+    private void HideGameUI()
+    {
+        foreach (var obj in mainGameObject)
+        {
+            if (obj != null)
+            {
+                obj.transform.DOScale(0f, 0.5f).SetEase(Ease.InBack);
+            }
+        }
+    }
+
+    private void HideGameUIWithDelay(GameObject panel, float delay)
+    {
+        StartCoroutine(HideAndShowCoroutine(panel, delay));
+    }
+
+    private IEnumerator HideAndShowCoroutine(GameObject panel, float delay)
+    {
+        HideGameUI();
+
+        yield return new WaitForSeconds(delay);
+
+        ShowWinLosePanel(panel);
+    }
+
+    private void ShowWinLosePanel(GameObject panel)
+    {
+        panel.transform.localScale = Vector3.zero;
+        panel.SetActive(true);
+        panel.transform.DOScale(0.4f, 0.5f).SetEase(Ease.InBack);
+    }
+
+    public void CheckWinCondition()
+    {
+        if (questions.Count == 0)
+        {
+            Debug.Log("Menang Le");
+
+            if (winPanel != null)
+            {
+                HideGameUIWithDelay(winPanel, 0.5f);
+                UpdateStars(score);
+            }
+            if (finalScoreText != null)
+            {
+                finalScoreText.text = $"{score}";
+            }
+        }
+    }
+
+    private void TriggerLoseCondition()
+    {
+        Debug.Log("Skill Issue");
+
+        if (losePanel != null)
+        {
+            HideGameUIWithDelay(losePanel, 0.5f);
+            UpdateStars(score);
+        }
+        if (finalScoreText != null)
+        {
+            finalScoreText.text = $"{score}";
+        }
+    }
+
 }
