@@ -214,6 +214,26 @@ public class QuestionSetup : MonoBehaviour
         }
     }
 
+    private void AnimateStars()
+    {
+        for (int i = 0; i < stars.Length; i++)
+        {
+            float delay = i * 0.3f;
+            stars[i].transform.localScale = Vector3.zero;
+            stars[i].gameObject.SetActive(true);
+
+            stars[i].transform.DOScale(0.4f, 0.5f).SetDelay(delay).SetEase(Ease.OutBack);
+            Debug.Log("Hoshimaci Goooo");
+        }
+    }
+
+    private IEnumerator DelayAnimateStars(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        UpdateStars(score);
+        AnimateStars();
+    }
+
     private void AnimateAnswerBoxes()
     {
         foreach (var box in answerBox)
@@ -269,12 +289,13 @@ public class QuestionSetup : MonoBehaviour
             if (winPanel != null)
             {
                 HideGameUIWithDelay(winPanel, 0.5f);
-                UpdateStars(score);
             }
             if (finalScoreText != null)
             {
                 finalScoreText.text = $"{score}";
             }
+
+            StartCoroutine(DelayAnimateStars(1f));
         }
     }
 
@@ -285,12 +306,13 @@ public class QuestionSetup : MonoBehaviour
         if (losePanel != null)
         {
             HideGameUIWithDelay(losePanel, 0.5f);
-            UpdateStars(score);
         }
         if (finalScoreText != null)
         {
             finalScoreText.text = $"{score}";
         }
+
+        StartCoroutine(DelayAnimateStars(1f));
     }
 
 }
