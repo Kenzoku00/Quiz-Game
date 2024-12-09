@@ -60,6 +60,8 @@ public class QuestionSetup : MonoBehaviour
     public bool isTransitioning = false;
     public bool isAnswered = false;
 
+    private bool isTimerInitialized = false;
+
     private void Awake()
     {
         GetQuestionAssets();
@@ -71,9 +73,15 @@ public class QuestionSetup : MonoBehaviour
         SetQuestionValue();
         SetAnswerValue();
         AnimateAnswerBoxes();
-        timer = timerDuration;
         isTimerRunning = true;
         isAnswered = false;
+
+        if (!isTimerInitialized)
+        {
+            timer = timerDuration;
+            isTimerRunning = true;
+            isTimerInitialized = true;
+        }
         
     }
 
