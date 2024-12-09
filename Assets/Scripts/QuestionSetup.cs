@@ -278,6 +278,15 @@ public class QuestionSetup : MonoBehaviour
         panel.transform.localScale = Vector3.zero;
         panel.SetActive(true);
         panel.transform.DOScale(0.4f, 0.5f).SetEase(Ease.InBack);
+        AudioManager.Instance.PlayWLSound();
+        AudioManager.Instance.MuteBGM(true);
+        StartCoroutine(UnmuteBGMAfterSound(2f));
+    }
+
+    private IEnumerator UnmuteBGMAfterSound(float delay)
+    {
+        yield return new WaitForSeconds(delay); 
+        AudioManager.Instance.MuteBGM(false); 
     }
 
     public void CheckWinCondition()

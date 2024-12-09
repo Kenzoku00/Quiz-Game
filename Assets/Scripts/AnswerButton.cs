@@ -11,6 +11,9 @@ public class AnswerButton : MonoBehaviour
     [SerializeField] private Image answerImage;
     [SerializeField] public QuestionSetup questionSetup;
 
+    [SerializeField] private AudioClip correctSound;
+    [SerializeField] private AudioClip wrongSound;
+
     public void SetAnswerImage(Sprite newImage)
     {
         answerImage.sprite = newImage;
@@ -34,11 +37,13 @@ public class AnswerButton : MonoBehaviour
             Debug.Log("CORRECT ANSWER");
             questionSetup.AddScore(10);
             AnimateCorrectAnswer();
+            AudioManager.Instance.PlaySFX(correctSound);
         }
         else
         {
             Debug.Log("WRONG ANSWER");
             AnimateWrongAnswer();
+            AudioManager.Instance.PlaySFX(wrongSound);
         }
     }
 

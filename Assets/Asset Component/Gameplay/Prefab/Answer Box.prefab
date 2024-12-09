@@ -148,6 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   answerImage: {fileID: 4046553464555776705}
   questionSetup: {fileID: 0}
+  correctSound: {fileID: 8300000, guid: 14db4cbb5cffa0f4fbbe033ad2f832af, type: 3}
+  wrongSound: {fileID: 8300000, guid: 4f50a2bb81beefd4fb319c190fcf1968, type: 3}
 --- !u!1 &8748765672698279216
 GameObject:
   m_ObjectHideFlags: 0
