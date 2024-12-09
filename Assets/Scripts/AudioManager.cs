@@ -104,4 +104,16 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void MuteSFX(bool mute)
+    {
+        if (mute)
+        {
+            sfxSource.mute = true;
+        }
+        else
+        {
+            sfxSource.mute = false;
+        }
+    }
+
 }

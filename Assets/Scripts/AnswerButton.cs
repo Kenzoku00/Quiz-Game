@@ -14,6 +14,9 @@ public class AnswerButton : MonoBehaviour
     [SerializeField] private AudioClip correctSound;
     [SerializeField] private AudioClip wrongSound;
 
+    [SerializeField] private Image correctPopUpImage;
+    [SerializeField] private Image wrongPopUpImage;
+
     public void SetAnswerImage(Sprite newImage)
     {
         answerImage.sprite = newImage;
@@ -38,13 +41,38 @@ public class AnswerButton : MonoBehaviour
             questionSetup.AddScore(10);
             AnimateCorrectAnswer();
             AudioManager.Instance.PlaySFX(correctSound);
+            ShowPopUp(correctPopUpImage);
         }
         else
         {
             Debug.Log("WRONG ANSWER");
             AnimateWrongAnswer();
             AudioManager.Instance.PlaySFX(wrongSound);
+            ShowPopUp(wrongPopUpImage);
         }
+    }
+
+    private void ShowPopUp(Image popUpImage)
+    {
+        if (popUpImage != null)
+        {
+            popUpImage.gameObject.SetActive(true);
+            popUpImage.transform.localScale = Vector3.zero;
+            popUpImage.transform.DOScale(1f, 0.3f).SetEase(Ease.OutBack).OnKill(() =>
+            {
+                StartCoroutine(HidePopUp(popUpImage));
+            });
+        }
+    }
+
+    private IEnumerator HidePopUp(Image popUpImage)
+    {
+        yield return new WaitForSeconds(1f); 
+
+        popUpImage.transform.DOScale(0f, 0.3f).OnKill(() =>
+        {
+            popUpImage.gameObject.SetActive(false);
+        });
     }
 
     private void AnimateCorrectAnswer()

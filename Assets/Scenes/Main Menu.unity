@@ -987,6 +987,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80bdbc5afcf86af4a8b8024ea8e3a7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundOnSprite: {fileID: 21300000, guid: 493fd7d0e626d4db091f50928058f0b8, type: 3}
+  soundOffSprite: {fileID: 21300000, guid: a7e1e81117197488db394021a1b04920, type: 3}
+  buttonImage: {fileID: 2045182294}
 --- !u!114 &759010260
 MonoBehaviour:
   m_ObjectHideFlags: 0
