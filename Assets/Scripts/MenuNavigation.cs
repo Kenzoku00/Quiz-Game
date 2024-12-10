@@ -19,4 +19,10 @@ public class MenuNavigation : MonoBehaviour
         yield return new WaitForSeconds(delay); 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void QuitApplication()
+    {
+        Debug.Log("Metu");
+        Application.Quit();
+    }
 }
